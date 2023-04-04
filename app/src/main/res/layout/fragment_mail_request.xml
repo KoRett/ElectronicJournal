@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MailRequestFragment">
+
+    <ImageButton
+        android:id="@+id/im_bt_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="26dp"
+        android:background="#00000000"
+        android:src="@drawable/ic_back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/im_change_password"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/im_change_password"
+        app:layout_constraintBottom_toTopOf="@+id/text_change_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/text_change_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal|top"
+        android:text="@string/text_change_password"
+        android:textColor="@color/dark"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/text_command"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/im_change_password" />
+
+    <TextView
+        android:id="@+id/text_command"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal|top"
+        android:text="Введите свою почту, на которую придет\nкод подтверждения"
+        android:textColor="@color/middle_gray"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/edit_text_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_change_password" />
+
+    <EditText
+        android:id="@+id/edit_text_email"
+        style="@style/EditTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:drawableStart="@drawable/ic_email_selector"
+        android:drawablePadding="15dp"
+        android:hint="@string/prompt_email"
+        android:inputType="textEmailAddress"
+        android:paddingStart="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_command" />
+
+    <Button
+        android:id="@+id/bt_send"
+        style="@style/ButtonStyle"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/action_send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_email" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
