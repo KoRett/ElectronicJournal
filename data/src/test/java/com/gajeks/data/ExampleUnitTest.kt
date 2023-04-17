@@ -1,4 +1,4 @@
-package com.example.electronicjournal
+package com.gajeks.data
 
 import org.junit.Test
 

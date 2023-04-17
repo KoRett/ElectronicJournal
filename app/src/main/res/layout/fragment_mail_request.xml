@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MailRequestFragment">
+    tools:context=".presentation.MailRequestFragment">
 
     <ImageButton
         android:id="@+id/im_bt_back"
@@ -48,16 +48,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal|top"
-        android:text="Введите свою почту, на которую придет\nкод подтверждения"
+        android:text="@string/enter_your_email_to_receive_a_confirmation_code"
         android:textColor="@color/middle_gray"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/edit_text_email"
+        app:layout_constraintBottom_toTopOf="@id/et_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_change_password" />
 
     <EditText
-        android:id="@+id/edit_text_email"
+        android:id="@+id/et_email"
         style="@style/EditTextStyle"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -84,6 +84,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_email" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

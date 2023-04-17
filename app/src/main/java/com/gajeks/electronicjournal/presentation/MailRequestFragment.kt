@@ -1,4 +1,4 @@
-package com.example.electronicjournal
+package com.gajeks.electronicjournal.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.fragment.findNavController
-import com.example.electronicjournal.databinding.FragmentMailRequestBinding
+import com.gajeks.electronicjournal.R
+import com.gajeks.electronicjournal.databinding.FragmentMailRequestBinding
 
 class MailRequestFragment : Fragment() {
 
@@ -19,9 +20,10 @@ class MailRequestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMailRequestBinding.inflate(inflater, container, false)
-        binding.imBtBack.setOnClickListener { activity?.onBackPressed() }
-        binding.btSend.setOnClickListener { findNavController().navigate(R.id.action_mailRequestFragment_to_changingPasswordFragment) }
-        binding.editTextEmail.doAfterTextChanged { binding.editTextEmail.isActivated = binding.editTextEmail.text.isNotEmpty() }
+        val navController = findNavController()
+        binding.imBtBack.setOnClickListener { navController.navigateUp() }
+        binding.btSend.setOnClickListener { navController.navigate(R.id.action_mailRequestFragment_to_changingPasswordFragment) }
+        binding.etEmail.doAfterTextChanged { binding.etEmail.isActivated = binding.etEmail.text.isNotEmpty() }
         return binding.root
     }
 

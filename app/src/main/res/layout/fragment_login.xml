@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginFragment">
+    tools:context=".presentation.login.LoginFragment">
 
     <ImageView
         android:id="@+id/im_welcome"
@@ -37,16 +37,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
-        android:text="Введите свою почту и пароль, чтобы войти"
+        android:text="@string/enter_your_email_to_login"
         android:textColor="@color/middle_gray"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/edit_text_email"
+        app:layout_constraintBottom_toTopOf="@+id/et_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_welcome" />
 
     <EditText
-        android:id="@+id/edit_text_email"
+        android:id="@+id/et_email"
         style="@style/EditTextStyle"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -58,13 +58,13 @@
         android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
         android:paddingStart="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/edit_text_password"
+        app:layout_constraintBottom_toTopOf="@+id/et_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_command" />
 
         <EditText
-            android:id="@+id/edit_text_password"
+            android:id="@+id/et_password"
             style="@style/EditTextStyle"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -79,7 +79,7 @@
             app:layout_constraintBottom_toTopOf="@+id/text_forgot_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_email" />
+            app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <TextView
         android:id="@+id/text_forgot_password"
@@ -93,7 +93,7 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/bt_login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_password" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <Button
         android:id="@+id/bt_login"

@@ -1,15 +1,16 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk 32
+    compileSdk compileAndroidSdk
 
     defaultConfig {
-        applicationId "com.example.electronicjournal"
-        minSdk 26
-        targetSdk 32
+        applicationId "com.gajeks.electronicjournal"
+        minSdk minAndroidSdk
+        targetSdk targetAndroidSdk
         versionCode 1
         versionName "1.0"
 
@@ -23,8 +24,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -36,17 +37,30 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.8.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation Libs.Android.CoreKtx
+    implementation Libs.Android.AppCompat
+    implementation Libs.Android.FragmentKtx
 
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation Libs.Android.Navigation.UI
+    implementation Libs.Android.Navigation.Fragments
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation Libs.Android.Lifecycle.LiveDataKtx
+    implementation Libs.Android.Lifecycle.RuntimeKtx
+    implementation Libs.Android.Lifecycle.ViewModelKtx
+
+    implementation Libs.Android.Room.RoomRuntime
+    annotationProcessor Libs.Android.Room.RoomCompiler
+    kapt Libs.Android.Room.RoomCompiler
+
+    implementation Libs.Google.Material
+
+    implementation Libs.Google.Dagger
+    kapt Libs.Google.DaggerCompiler
+
+    implementation Libs.JetBrains.Coroutines.Core
+
+    implementation project(path: ':data')
+    implementation project(path: ':domain')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

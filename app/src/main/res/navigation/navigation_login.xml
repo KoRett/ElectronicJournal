@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_login"
     app:startDestination="@id/loginFragment">
-    
+
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.electronicjournal.LoginFragment"
+        android:name="com.gajeks.electronicjournal.presentation.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_mailRequestFragment"
             app:destination="@id/mailRequestFragment"
@@ -20,9 +20,9 @@
     </fragment>
     <fragment
         android:id="@+id/mailRequestFragment"
-        android:name="com.example.electronicjournal.MailRequestFragment"
+        android:name="com.gajeks.electronicjournal.presentation.MailRequestFragment"
         android:label="fragment_mail_request"
-        tools:layout="@layout/fragment_mail_request" >
+        tools:layout="@layout/fragment_mail_request">
         <action
             android:id="@+id/action_mailRequestFragment_to_changingPasswordFragment"
             app:destination="@id/changingPasswordFragment"
@@ -33,15 +33,18 @@
     </fragment>
     <fragment
         android:id="@+id/changingPasswordFragment"
-        android:name="com.example.electronicjournal.ChangingPasswordFragment"
+        android:name="com.gajeks.electronicjournal.presentation.ChangingPasswordFragment"
         android:label="fragment_changing_password"
-        tools:layout="@layout/fragment_changing_password" >
+        tools:layout="@layout/fragment_changing_password">
         <action
             android:id="@+id/action_changingPasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navigation_login"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>

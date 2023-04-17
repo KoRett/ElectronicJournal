@@ -1,8 +1,61 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+/**
+ * @author k.rostislav
+ */
+buildscript {
+    ext {
+        compileAndroidSdk = 33
+        targetAndroidSdk = 33
+        minAndroidSdk = 23
+
+        daggerVersion = "2.45"
+        navVersion = "2.4.0"
+        roomVersion = "2.5.1"
+
+        Libs = [
+                Android : [
+                        CoreKtx         : "androidx.core:core-ktx:1.9.0",
+                        FragmentKtx     : "androidx.fragment:fragment-ktx:1.5.5",
+                        ActivityKtx     : "androidx.activity:activity-ktx:1.6.1",
+                        AppCompat       : "androidx.appcompat:appcompat:1.6.0",
+                        Lifecycle       : [
+                                LiveDataKtx    : "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1",
+                                RuntimeKtx  : "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1",
+                                ViewModelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1",
+                        ],
+                        ConstraintLayout: "androidx.constraintlayout:constraintlayout:2.1.4",
+                        RecyclerView    : "androidx.recyclerview:recyclerview:1.2.1",
+                        Navigation      : [
+                                Fragments: "androidx.navigation:navigation-fragment-ktx:$navVersion",
+                                UI       : "androidx.navigation:navigation-ui-ktx:$navVersion",
+                        ],
+                        Room            : [
+                                RoomRuntime : "androidx.room:room-runtime:$roomVersion",
+                                RoomCompiler : "androidx.room:room-compiler:$roomVersion"
+
+                        ]
+                ],
+                Google   : [
+                        Material      : "com.google.android.material:material:1.8.0",
+                        Dagger        : "com.google.dagger:hilt-android:$daggerVersion",
+                        DaggerCompiler: "com.google.dagger:dagger-compiler:$daggerVersion",
+                        GoogleServices: "com.google.gms:google-services:4.3.15",
+                ],
+                JetBrains: [
+                        Coroutines: [
+                                Core        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4",
+                                PlayServices: "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4",
+                        ]
+                ]
+        ]
+    }
+}
+
 plugins {
     id 'com.android.application' version '7.2.2' apply false
     id 'com.android.library' version '7.2.2' apply false
-    id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+    id 'org.jetbrains.kotlin.jvm' version '1.7.10' apply false
+    id 'com.google.dagger.hilt.android' version '2.45' apply false
 }
 
 task clean(type: Delete) {

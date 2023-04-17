@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.electronicjournal">
+    package="com.gajeks.electronicjournal">
 
     <application
+        android:name=".app.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,7 +15,7 @@
         android:theme="@style/Theme.ElectronicJournal"
         tools:targetApi="31">
         <activity
-            android:name=".EntranceActivity"
+            android:name="com.gajeks.electronicjournal.presentation.EntranceActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
