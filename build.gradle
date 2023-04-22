@@ -30,8 +30,8 @@ buildscript {
                         ],
                         Room            : [
                                 RoomRuntime : "androidx.room:room-runtime:$roomVersion",
-                                RoomCompiler : "androidx.room:room-compiler:$roomVersion"
-
+                                RoomCompiler : "androidx.room:room-compiler:$roomVersion",
+                                RoomKtx : "androidx.room:room-ktx:$roomVersion"
                         ]
                 ],
                 Google   : [

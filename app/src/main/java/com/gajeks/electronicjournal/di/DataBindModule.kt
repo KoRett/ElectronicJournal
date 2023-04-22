@@ -1,7 +1,9 @@
 package com.gajeks.electronicjournal.di
 
-import com.gajeks.electronicjournal.data.storage.UserStorage
-import com.gajeks.electronicjournal.data.storage.UserStorageSQL
+import com.gajeks.electronicjournal.data.storage.LocalUserStorage
+import com.gajeks.electronicjournal.data.storage.UserStorageDatabase
+import com.gajeks.electronicjournal.data.storage.RoomUserStorage
+import com.gajeks.electronicjournal.data.storage.SharedPrefUserStorage
 import dagger.Binds
 import dagger.Module
 
@@ -9,5 +11,9 @@ import dagger.Module
 interface DataBindModule {
 
     @Binds
-    fun bindUserStorageSQL_to_UserStorage(userStorageSQL: UserStorageSQL): UserStorage
+    fun bindRoomUserStorage_to_UserStrorageDatabase(roomUserStorage: RoomUserStorage): UserStorageDatabase
+
+    @Binds
+    fun bindSharedPrefUserStorage_to_LocalUserStorage(sharedPrefUserStorage: SharedPrefUserStorage): LocalUserStorage
+
 }

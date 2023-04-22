@@ -35,8 +35,9 @@
     </option>
   </component>
   <component name="EntryPointsManager">
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="dagger.Binds" />
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="androidx.room.Entity" />
+      <item index="1" class="java.lang.String" itemvalue="dagger.Binds" />
     </list>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Embedded JDK" project-jdk-type="JavaSDK">

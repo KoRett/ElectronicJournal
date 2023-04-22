@@ -1,7 +1,10 @@
 package com.gajeks.electronicjournal.di
 
 import android.content.Context
-import com.gajeks.electronicjournal.presentation.login.LoginFragment
+import com.gajeks.electronicjournal.presentation.entrance.login.LoginFragment
+import com.gajeks.electronicjournal.presentation.splash.SplashFragment
+import com.gajeks.electronicjournal.presentation.tabs.profile.ProfileFragment
+import com.gajeks.electronicjournal.presentation.tabs.schedule.ScheduleFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -11,6 +14,9 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(loginFragment: LoginFragment)
+    fun inject(splashFragment: SplashFragment)
+    fun inject(profileFragment: ProfileFragment)
+    fun inject(scheduleFragment: ScheduleFragment)
 
     @Component.Builder
     interface Builder {
