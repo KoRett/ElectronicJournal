@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="ActionBarStyle" parent="Widget.AppCompat.Light.ActionBar">
+        <item name="background">@color/accent_variant</item>
+        <item name="elevation">0dp</item>
+    </style>
+
     <style name="ButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/white</item>
@@ -10,11 +16,11 @@
     </style>
 
     <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
-        <!--        <item name="android:drawableTint">@color/middle_gray</item>-->
         <item name="android:textColorHint">@color/middle_gray</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textCursorDrawable">@drawable/color_cursor</item>
         <item name="android:textColor">@color/accent</item>
+        <item name="android:drawableTint">@drawable/edit_text_color_selector</item>
         <item name="android:maxLength">50</item>
         <item name="android:paddingEnd">20dp</item>
         <item name="android:background">@drawable/bg_edit_text_selector</item>

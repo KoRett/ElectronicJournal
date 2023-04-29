@@ -64,7 +64,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:drawableStart="@drawable/ic_email_selector"
+        android:drawableStart="@drawable/ic_email"
         android:drawablePadding="15dp"
         android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"

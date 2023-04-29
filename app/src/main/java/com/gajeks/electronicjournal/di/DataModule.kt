@@ -2,18 +2,20 @@ package com.gajeks.electronicjournal.di
 
 import android.content.Context
 import androidx.room.Room
-import com.gajeks.electronicjournal.data.repository.UserRepositoryImpl
+import com.gajeks.electronicjournal.data.repository.LocalAccountRepositoryImpl
+import com.gajeks.electronicjournal.data.repository.StudentRepositoryImpl
+import com.gajeks.electronicjournal.data.repository.TeacherRepositoryImpl
 import com.gajeks.electronicjournal.data.storage.LocalUserStorage
 import com.gajeks.electronicjournal.data.storage.room.LocalDatabase
-import com.gajeks.electronicjournal.data.storage.UserStorageDatabase
-import com.gajeks.electronicjournal.data.storage.RoomUserStorage
 import com.gajeks.electronicjournal.data.storage.SharedPrefUserStorage
-import com.gajeks.electronicjournal.domain.repository.UserRepository
+import com.gajeks.electronicjournal.domain.repository.LocalAccountRepository
+import com.gajeks.electronicjournal.domain.repository.StudentRepository
+import com.gajeks.electronicjournal.domain.repository.TeacherRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(includes = [DataBindModule::class])
+@Module
 class DataModule {
 
     @Provides
@@ -27,20 +29,26 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideRoomUserStorage(localDatabase: LocalDatabase): RoomUserStorage {
-        return RoomUserStorage(userDao = localDatabase.userDao())
-    }
-
-    @Provides
-    @Singleton
-    fun provideSharedPrefUserStorage(context: Context): SharedPrefUserStorage {
+    fun provideSharedPrefUserStorage(context: Context): LocalUserStorage {
         return SharedPrefUserStorage(context = context)
     }
 
     @Provides
     @Singleton
-    fun provideUserRepository(userStorageDatabase: UserStorageDatabase, localUserStorage: LocalUserStorage): UserRepository {
-        return UserRepositoryImpl(userStorageDatabase = userStorageDatabase, localUserStorage = localUserStorage)
+    fun provideStudentRepository(localDatabase: LocalDatabase): StudentRepository {
+        return StudentRepositoryImpl(studentDao = localDatabase.studentDao())
+    }
+
+    @Provides
+    @Singleton
+    fun provideTeacherRepository(localDatabase: LocalDatabase): TeacherRepository {
+        return TeacherRepositoryImpl(teacherDao = localDatabase.teacherDao())
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocalAccountRepository(localUserStorage: LocalUserStorage): LocalAccountRepository {
+        return LocalAccountRepositoryImpl(localUserStorage = localUserStorage)
     }
 
 }

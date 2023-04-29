@@ -1,11 +1,12 @@
 package com.gajeks.electronicjournal.domain.usecase
 
-import com.gajeks.electronicjournal.domain.repository.UserRepository
+import com.gajeks.electronicjournal.domain.models.SuccessResult
+import com.gajeks.electronicjournal.domain.repository.LocalAccountRepository
 
-class CheckAccountLoginUseCase(private val userRepository: UserRepository) {
+class CheckAccountLoginUseCase(private val localAccountRepository: LocalAccountRepository) {
 
-    suspend fun execute(): Boolean{
-        return userRepository.getId() != -1
+    suspend fun execute(): SuccessResult<Boolean> {
+        return SuccessResult(localAccountRepository.getLocalId() != -1)
     }
 
 }

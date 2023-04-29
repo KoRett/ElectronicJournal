@@ -9,6 +9,7 @@ import com.gajeks.electronicjournal.domain.models.UserLoginParams
 import com.gajeks.electronicjournal.domain.usecase.LoginUseCase
 import com.gajeks.electronicjournal.models.BaseViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginUseCase: LoginUseCase) : BaseViewModel() {
@@ -16,9 +17,15 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : BaseViewModel() {
     private val resultLiveData = MutableLiveData<Boolean>()
     val resultLive: LiveData<Boolean> = resultLiveData
 
+    private var loginJob: Job? = null
+
     fun login(userLoginParams: UserLoginParams) {
-        viewModelScope.launch(Dispatchers.IO) {
-            resultLiveData.postValue(loginUseCase.execute(userLoginParams = userLoginParams))
+        loginJob?.cancel()
+        loginJob = viewModelScope.launch(Dispatchers.IO) {
+            val result: Boolean = loginUseCase.execute(userLoginParams = userLoginParams)
+            launch(Dispatchers.Main) {
+                resultLiveData.value = result
+            }
         }
     }
 

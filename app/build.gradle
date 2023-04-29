@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -15,16 +16,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += [
-                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
-                        "room.incremental"     : "true",
-                        "room.expandProjection": "true"
-                ]
-            }
-        }
     }
 
     buildTypes {
@@ -49,6 +40,7 @@ dependencies {
 
     implementation Libs.Android.CoreKtx
     implementation Libs.Android.AppCompat
+    implementation Libs.Android.ConstraintLayout
     implementation Libs.Android.FragmentKtx
 
     implementation Libs.Android.Navigation.UI
@@ -60,9 +52,6 @@ dependencies {
 
     implementation Libs.Android.Room.RoomRuntime
     implementation Libs.Android.Room.RoomKtx
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    annotationProcessor Libs.Android.Room.RoomCompiler
-    kapt Libs.Android.Room.RoomCompiler
 
     implementation Libs.Google.Material
 

@@ -2,49 +2,66 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_login"
-    app:startDestination="@id/loginFragment">
+    android:id="@+id/main_graph"
+    app:startDestination="@id/login_fragment">
 
     <fragment
-        android:id="@+id/loginFragment"
+        android:id="@+id/login_fragment"
         android:name="com.gajeks.electronicjournal.presentation.entrance.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_mailRequestFragment"
-            app:destination="@id/mailRequestFragment"
+            android:id="@+id/action_login_fragment_to_mail_request_fragment"
+            app:destination="@id/mail_request_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_login_fragment_to_tabs_fragment"
+            app:destination="@id/tabs_fragment"
+            app:enterAnim="@anim/appear"
+            app:exitAnim="@anim/disappear"
+            app:popEnterAnim="@anim/disappear"
+            app:popExitAnim="@anim/appear"
+            app:popUpTo="@id/login_fragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/mailRequestFragment"
+        android:id="@+id/mail_request_fragment"
         android:name="com.gajeks.electronicjournal.presentation.entrance.mail_request.MailRequestFragment"
         android:label="fragment_mail_request"
         tools:layout="@layout/fragment_mail_request">
         <action
-            android:id="@+id/action_mailRequestFragment_to_changingPasswordFragment"
-            app:destination="@id/changingPasswordFragment"
+            android:id="@+id/action_mail_request_fragment_to_changing_password_fragment"
+            app:destination="@id/changing_password_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
-        android:id="@+id/changingPasswordFragment"
+        android:id="@+id/changing_password_fragment"
         android:name="com.gajeks.electronicjournal.presentation.entrance.changing_password.ChangingPasswordFragment"
         android:label="fragment_changing_password"
         tools:layout="@layout/fragment_changing_password">
         <action
-            android:id="@+id/action_changingPasswordFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
+            android:id="@+id/action_changing_password_fragment_to_login_fragment"
+            app:destination="@id/login_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/navigation_login"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@id/login_fragment"
+            app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/tabs_fragment"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.TabsFragment"
+        android:label="fragment_tabs"
+        tools:layout="@layout/fragment_tabs" />
 </navigation>

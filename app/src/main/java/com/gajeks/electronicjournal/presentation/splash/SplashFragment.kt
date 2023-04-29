@@ -9,12 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.gajeks.electronicjournal.app.App
 import com.gajeks.electronicjournal.databinding.FragmentSplashBinding
+import com.gajeks.electronicjournal.domain.models.takeSuccess
 import com.gajeks.electronicjournal.models.BaseFragment
 import com.gajeks.electronicjournal.presentation.MainActivity
+import com.gajeks.electronicjournal.presentation.MainActivityArgs
 import javax.inject.Inject
 import javax.inject.Provider
-
-private val KEY_IS_SIGNED_IN = "is_signed_in"
 
 class SplashFragment : BaseFragment() {
 
@@ -37,7 +37,7 @@ class SplashFragment : BaseFragment() {
         _binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
 
         vm.resultLive.observe(viewLifecycleOwner){
-            launchMainScreen(it)
+            launchMainScreen(it.takeSuccess()!!)
         }
 
         return binding.root
@@ -47,9 +47,8 @@ class SplashFragment : BaseFragment() {
         val intent = Intent(requireContext(), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
-        val args = Bundle()
-        args.putBoolean(KEY_IS_SIGNED_IN, isSignedIn)
-        intent.putExtras(args)
+        val args = MainActivityArgs(isSignedIn = isSignedIn)
+        intent.putExtras(args.toBundle())
 
         startActivity(intent)
     }

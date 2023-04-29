@@ -21,11 +21,22 @@ class ChangingPasswordFragment : Fragment() {
     ): View {
         _binding = FragmentChangingPasswordBinding.inflate(inflater, container, false)
         val navController = findNavController()
-        binding.imBtBack.setOnClickListener{ navController.navigateUp() }
-        binding.btChangePassword.setOnClickListener { navController.navigate(R.id.action_changingPasswordFragment_to_loginFragment) }
-        binding.etNewPassword.doAfterTextChanged { binding.etNewPassword.isActivated = binding.etNewPassword.text.isNotEmpty() }
-        binding.etConfirmationCode.doAfterTextChanged { binding.etConfirmationCode.isActivated = binding.etConfirmationCode.text.isNotEmpty() }
-        binding.etConfirmationNewPassword.doAfterTextChanged { binding.etConfirmationNewPassword.isActivated = binding.etConfirmationNewPassword.text.isNotEmpty() }
+        binding.imBtBack.setOnClickListener { navController.popBackStack() }
+        binding.btChangePassword.setOnClickListener {
+            navController.navigate(
+                R.id.action_changing_password_fragment_to_login_fragment
+            )
+        }
+        binding.etNewPassword.doAfterTextChanged {
+            binding.etNewPassword.isActivated = binding.etNewPassword.text.isNotEmpty()
+        }
+        binding.etConfirmationCode.doAfterTextChanged {
+            binding.etConfirmationCode.isActivated = binding.etConfirmationCode.text.isNotEmpty()
+        }
+        binding.etConfirmationNewPassword.doAfterTextChanged {
+            binding.etConfirmationNewPassword.isActivated =
+                binding.etConfirmationNewPassword.text.isNotEmpty()
+        }
 
         return binding.root
     }

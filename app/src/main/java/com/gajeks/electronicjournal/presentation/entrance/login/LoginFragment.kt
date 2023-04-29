@@ -51,6 +51,7 @@ class LoginFragment : BaseFragment() {
                 Toast.makeText(context, "TRUE", Toast.LENGTH_SHORT).show()
             else
                 Toast.makeText(context, "FALSE", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_login_fragment_to_tabs_fragment)
         }
 
         binding.btLogin.setOnClickListener {
@@ -63,10 +64,19 @@ class LoginFragment : BaseFragment() {
         }
 
         binding.textForgotPassword.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_mailRequestFragment)
+            onForgotPasswordTextPressed()
         }
 
         return binding.root
+    }
+
+    private fun onForgotPasswordTextPressed() {
+        val email = binding.etEmail.text.toString()
+        val emailArg = email.ifBlank { null }
+
+        val direction = LoginFragmentDirections.actionLoginFragmentToMailRequestFragment(emailArg)
+
+        findNavController().navigate(direction)
     }
 
     override fun onDestroyView() {

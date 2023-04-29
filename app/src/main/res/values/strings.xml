@@ -13,10 +13,11 @@
     <string name="action_sign_in">ВОЙТИ</string>
     <string name="action_send">Отправить</string>
     <string name="action_change_password">Сменить пароль</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_your_email_to_login">Введите свою почту и пароль, чтобы войти</string>
     <string name="enter_your_email_to_receive_a_confirmation_code">Введите свою почту, на которую придет\nкод подтверждения</string>
     <string name="fill_in_all_fields_to_change_the_password">Заполниет все поля, чтобы поменять пароль</string>
-    <string name="error_failed_to_load_data">Error! Failed to load data!</string>
+    <string name="error_failed_to_load_data">Ошибка! Невозможно загрузить данные!</string>
+    <string name="navigation_profile">Профиль</string>
+    <string name="navigation_schedule">Расписание</string>
+    <string name="navigation_news">Новости</string>
 </resources>

@@ -1,16 +1,18 @@
 package com.gajeks.electronicjournal.presentation.splash
 
 import androidx.lifecycle.*
+import com.gajeks.electronicjournal.domain.models.SuccessResult
 import com.gajeks.electronicjournal.domain.usecase.CheckAccountLoginUseCase
 import com.gajeks.electronicjournal.models.BaseViewModel
+import com.gajeks.electronicjournal.models.LiveResult
+import com.gajeks.electronicjournal.models.MutableLiveResult
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SplashViewModel(private val checkAccountLoginUseCase: CheckAccountLoginUseCase) : BaseViewModel() {
 
-    private val resultLiveData = MutableLiveData<Boolean>()
-    val resultLive: LiveData<Boolean> = resultLiveData
+    private val resultLiveData = MutableLiveResult<Boolean>()
+    val resultLive: LiveResult<Boolean> = resultLiveData
 
     init{
         checkAccountLogin()
@@ -18,8 +20,10 @@ class SplashViewModel(private val checkAccountLoginUseCase: CheckAccountLoginUse
 
     private fun checkAccountLogin(){
         viewModelScope.launch(Dispatchers.IO) {
-            delay(1000L)
-            resultLiveData.postValue(checkAccountLoginUseCase.execute())
+            val result: SuccessResult<Boolean> = checkAccountLoginUseCase.execute()
+            launch(Dispatchers.Main) {
+                resultLiveData.value = result
+            }
         }
     }
 

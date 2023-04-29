@@ -1,6 +1,8 @@
 package com.gajeks.electronicjournal.di
 
-import com.gajeks.electronicjournal.domain.repository.UserRepository
+import com.gajeks.electronicjournal.domain.repository.LocalAccountRepository
+import com.gajeks.electronicjournal.domain.repository.StudentRepository
+import com.gajeks.electronicjournal.domain.repository.TeacherRepository
 import com.gajeks.electronicjournal.domain.usecase.CheckAccountLoginUseCase
 import com.gajeks.electronicjournal.domain.usecase.LoginUseCase
 import dagger.Module
@@ -11,13 +13,23 @@ import dagger.Provides
 class DomainModule {
 
     @Provides
-    fun provideLoginUseCase(userRepository: UserRepository): LoginUseCase {
-        return LoginUseCase(userRepository = userRepository)
+    fun provideLoginUseCase(
+        studentRepository: StudentRepository,
+        teacherRepository: TeacherRepository,
+        localAccountRepository: LocalAccountRepository
+    ): LoginUseCase {
+        return LoginUseCase(
+            studentRepository = studentRepository,
+            teacherRepository = teacherRepository,
+            localAccountRepository = localAccountRepository
+        )
     }
 
     @Provides
-    fun provideCheckAccountLoginUseCase(userRepository: UserRepository): CheckAccountLoginUseCase{
-        return CheckAccountLoginUseCase(userRepository = userRepository)
+    fun provideCheckAccountLoginUseCase(
+        localAccountRepository: LocalAccountRepository
+    ): CheckAccountLoginUseCase {
+        return CheckAccountLoginUseCase(localAccountRepository = localAccountRepository)
     }
 
 }
