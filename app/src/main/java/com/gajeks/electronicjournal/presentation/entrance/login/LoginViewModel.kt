@@ -11,25 +11,26 @@ import com.gajeks.electronicjournal.models.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class LoginViewModel(private val loginUseCase: LoginUseCase) : BaseViewModel() {
 
-    private val resultLiveData = MutableLiveData<Boolean>()
-    val resultLive: LiveData<Boolean> = resultLiveData
+    private val resultLiveData = MutableLiveData<String?>()
+    val resultLive: LiveData<String?> = resultLiveData
 
     private var loginJob: Job? = null
 
     fun login(userLoginParams: UserLoginParams) {
         loginJob?.cancel()
         loginJob = viewModelScope.launch(Dispatchers.IO) {
-            val result: Boolean = loginUseCase.execute(userLoginParams = userLoginParams)
+            val result: String? = loginUseCase.execute(userLoginParams = userLoginParams)
             launch(Dispatchers.Main) {
                 resultLiveData.value = result
             }
         }
     }
 
-    class Factory(
+    class Factory @Inject constructor(
         private val loginUseCase: LoginUseCase
     ) : ViewModelProvider.Factory {
 

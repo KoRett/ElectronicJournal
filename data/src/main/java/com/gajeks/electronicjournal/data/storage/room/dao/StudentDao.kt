@@ -1,9 +1,7 @@
 package com.gajeks.electronicjournal.data.storage.room.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
+import com.gajeks.electronicjournal.data.models.PersonNameInDB
 import com.gajeks.electronicjournal.data.storage.room.entities.StudentEntity
 
 @Dao
@@ -12,13 +10,19 @@ interface StudentDao {
     @Query("SELECT password FROM ${StudentEntity.TABLE_NAME} WHERE email LIKE :email")
     suspend fun getPassword(email: String): String?
 
-    @Query("SELECT password FROM ${StudentEntity.TABLE_NAME} WHERE id LIKE :id")
-    suspend fun getPassword(id: Int): String?
+    @Query("SELECT password FROM ${StudentEntity.TABLE_NAME} WHERE student_id LIKE :studentId")
+    suspend fun getPassword(studentId: Int): String?
 
-    @Query("SELECT id FROM ${StudentEntity.TABLE_NAME} WHERE email LIKE :email")
+    @Query("UPDATE ${StudentEntity.TABLE_NAME} SET password = :newPassword WHERE student_id LIKE :studentId")
+    suspend fun setPassword(studentId: Int, newPassword: String)
+
+    @Query("SELECT student_id FROM ${StudentEntity.TABLE_NAME} WHERE email LIKE :email")
     suspend fun getId(email: String): Int?
 
-    @Insert(entity = StudentEntity::class, onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addUser(studentEntity: StudentEntity)
+    @Query("SELECT group_id FROM ${StudentEntity.TABLE_NAME} WHERE student_id LIKE :studentId")
+    suspend fun getGroupId(studentId: Int): Int?
+
+    @Query("SELECT first_name, last_name, patronymic FROM ${StudentEntity.TABLE_NAME} WHERE student_id LIKE :studentId")
+    suspend fun getName(studentId: Int): PersonNameInDB?
 
 }

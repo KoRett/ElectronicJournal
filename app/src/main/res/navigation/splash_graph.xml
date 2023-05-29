@@ -17,6 +17,6 @@
         tools:layout="@layout/activity_main">
         <argument
             android:name="isSignedIn"
-            app:argType="boolean" />
+            app:argType="string" />
     </activity>
 </navigation>

@@ -3,21 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tabs_student_graph"
-    app:startDestination="@id/navigation_schedule">
+    app:startDestination="@id/tabs_student_schedule_graph">
+
+    <include app:graph="@navigation/tabs_student_schedule_graph" />
 
     <fragment
-        android:id="@+id/navigation_schedule"
-        android:name="com.gajeks.electronicjournal.presentation.tabs.schedule.ScheduleFragment"
-        android:label="Расписание"
-        tools:layout="@layout/fragment_schedule" />
-    <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.gajeks.electronicjournal.presentation.tabs.profile.ProfileFragment"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.student.profile.StudentProfileFragment"
         android:label="Профиль"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_student_profile" />
+
     <fragment
         android:id="@+id/navigation_news"
-        android:name="com.gajeks.electronicjournal.presentation.tabs.news.NewsFragment"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.student.news.StudentNewsFragment"
         android:label="Новости"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_student_news" />
+
 </navigation>

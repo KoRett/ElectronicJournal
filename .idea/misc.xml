@@ -35,9 +35,10 @@
     </option>
   </component>
   <component name="EntryPointsManager">
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="androidx.room.Entity" />
-      <item index="1" class="java.lang.String" itemvalue="dagger.Binds" />
+      <item index="1" class="java.lang.String" itemvalue="androidx.room.Query" />
+      <item index="2" class="java.lang.String" itemvalue="dagger.Binds" />
     </list>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Embedded JDK" project-jdk-type="JavaSDK">
@@ -45,5 +46,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.072" />
+      </ProjectState>
+    </option>
   </component>
 </project>

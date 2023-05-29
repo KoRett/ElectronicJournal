@@ -18,8 +18,8 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_login_fragment_to_tabs_fragment"
-            app:destination="@id/tabs_fragment"
+            android:id="@+id/action_login_fragment_to_tabs_student_fragment"
+            app:destination="@id/tabs_student_graph"
             app:enterAnim="@anim/appear"
             app:exitAnim="@anim/disappear"
             app:popEnterAnim="@anim/disappear"
@@ -60,8 +60,18 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/tabs_fragment"
-        android:name="com.gajeks.electronicjournal.presentation.tabs.TabsFragment"
+        android:id="@+id/tabs_student_graph"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.student.StudentTabsFragment"
         android:label="fragment_tabs"
-        tools:layout="@layout/fragment_tabs" />
+        tools:layout="@layout/fragment_student_tabs">
+        <action
+            android:id="@+id/action_tabs_student_fragment_to_login_fragment"
+            app:destination="@id/login_fragment"
+            app:enterAnim="@anim/appear"
+            app:exitAnim="@anim/disappear"
+            app:popEnterAnim="@anim/disappear"
+            app:popExitAnim="@anim/appear"
+            app:popUpTo="@id/tabs_student_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

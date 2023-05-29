@@ -6,4 +6,12 @@ interface LocalUserStorage {
 
     suspend fun saveId(id: Int)
 
+    suspend fun removeId()
+
+    suspend fun getType(): String
+
+    suspend fun saveType(type: String)
+
+    suspend fun removeType()
+
 }

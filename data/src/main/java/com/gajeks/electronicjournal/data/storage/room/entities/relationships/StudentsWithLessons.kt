@@ -8,18 +8,18 @@ import com.gajeks.electronicjournal.data.storage.room.entities.*
 data class StudentWithLessons(
     @Embedded val student: StudentEntity,
     @Relation(
-        parentColumn = "id",
-        entityColumn = "student_id",
+        parentColumn = "student_id",
+        entityColumn = "lesson_id",
         associateBy = Junction(AttendanceEntity::class)
     )
     val lessons: List<LessonEntity>
 )
 
-data class LessonsWithStudent(
+data class LessonWithStudents(
     @Embedded val lesson: LessonEntity,
     @Relation(
-        parentColumn = "id",
-        entityColumn = "lesson_id",
+        parentColumn = "lesson_id",
+        entityColumn = "student_id",
         associateBy = Junction(AttendanceEntity::class)
     )
     val students: List<StudentEntity>

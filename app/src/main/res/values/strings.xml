@@ -16,8 +16,18 @@
     <string name="enter_your_email_to_login">Введите свою почту и пароль, чтобы войти</string>
     <string name="enter_your_email_to_receive_a_confirmation_code">Введите свою почту, на которую придет\nкод подтверждения</string>
     <string name="fill_in_all_fields_to_change_the_password">Заполниет все поля, чтобы поменять пароль</string>
-    <string name="error_failed_to_load_data">Ошибка! Невозможно загрузить данные!</string>
+    <string name="error_failed_to_load_data">Ошибка!\nНевозможно загрузить данные!</string>
     <string name="navigation_profile">Профиль</string>
     <string name="navigation_schedule">Расписание</string>
     <string name="navigation_news">Новости</string>
+    <string name="text_pn">ПН</string>
+    <string name="text_vt">ВТ</string>
+    <string name="text_sr">СР</string>
+    <string name="text_cht">ЧТ</string>
+    <string name="text_pt">ПТ</string>
+    <string name="text_sb">СБ</string>
+    <string name="text_vs">ВС</string>
+    <string name="text_logout">Выйти</string>
+    <string name="text_options">Настройки</string>
+    <string name="text_login_error">Неправильная почта или пароль!\nПовторите попытку.</string>
 </resources>

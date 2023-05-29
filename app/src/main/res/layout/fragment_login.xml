@@ -60,26 +60,28 @@
         android:paddingStart="30dp"
         app:layout_constraintBottom_toTopOf="@+id/et_password"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_command" />
+        app:layout_constraintTop_toBottomOf="@+id/text_command"
+        tools:ignore="RtlSymmetry" />
 
-        <EditText
-            android:id="@+id/et_password"
-            style="@style/EditTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="20dp"
-            android:drawableStart="@drawable/ic_password"
-            android:drawablePadding="17dp"
-            android:hint="@string/prompt_password"
-            android:inputType="textPassword"
-            android:paddingStart="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/text_forgot_password"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_email" />
+    <EditText
+        android:id="@+id/et_password"
+        style="@style/EditTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:drawableStart="@drawable/ic_password"
+        android:drawablePadding="17dp"
+        android:hint="@string/prompt_password"
+        android:inputType="textPassword"
+        android:paddingStart="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_forgot_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <TextView
         android:id="@+id/text_forgot_password"
@@ -94,6 +96,20 @@
         app:layout_constraintBottom_toTopOf="@+id/bt_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+    <TextView
+        android:id="@+id/text_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/text_login_error"
+        android:textColor="@color/middle_gray"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bt_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_forgot_password" />
 
     <Button
         android:id="@+id/bt_login"

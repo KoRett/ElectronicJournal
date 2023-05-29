@@ -11,20 +11,22 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.gajeks.electronicjournal.R
 import com.gajeks.electronicjournal.databinding.ActivityMainBinding
-import com.gajeks.electronicjournal.presentation.tabs.TabsFragment
+import com.gajeks.electronicjournal.domain.usecase.LoginUseCase.Companion.STUDENT
+import com.gajeks.electronicjournal.presentation.tabs.student.StudentTabsFragment
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var navController: NavController? = null
 
-    private val destinationListener =
-        NavController.OnDestinationChangedListener { _, destination, arguments ->
-            if (isSignInDestination(destination))
-                supportActionBar?.hide()
-            else
-                supportActionBar?.show()
-        }
+    //TODO 1.1) Remove or reused destination listener
+//    private val destinationListener =
+//        NavController.OnDestinationChangedListener { _, destination, _ ->
+//            if (isSignInDestination(destination))
+//                supportActionBar?.hide()
+//            else
+//                supportActionBar?.show()
+//        }
 
     private val fragmentListener = object : FragmentManager.FragmentLifecycleCallbacks() {
         override fun onFragmentViewCreated(
@@ -34,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             savedInstanceState: Bundle?
         ) {
             super.onFragmentViewCreated(fm, f, v, savedInstanceState)
-            if (f is TabsFragment || f is NavHostFragment) return
+            if (f is StudentTabsFragment || f is NavHostFragment) return
             onNavControllerActivated(f.findNavController())
         }
     }
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         supportActionBar?.hide()
+        supportActionBar?.elevation = 0F
 
         val navController = getRootNavController()
         prepareRootNavController(isSignedIn(), navController)
@@ -53,21 +56,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+
     private fun onNavControllerActivated(navController: NavController) {
         if (this.navController == navController) return
-        this.navController?.removeOnDestinationChangedListener(destinationListener)
-        navController.addOnDestinationChangedListener(destinationListener)
+        //TODO 1.2) Remove or reused destination listener
+//        this.navController?.removeOnDestinationChangedListener(destinationListener)
+//        navController.addOnDestinationChangedListener(destinationListener)
         this.navController = navController
     }
 
     override fun onSupportNavigateUp(): Boolean =
         (navController?.navigateUp() ?: false) || super.onSupportNavigateUp()
 
-    private fun prepareRootNavController(isSignedIn: Boolean, navController: NavController) {
+    private fun prepareRootNavController(isSignedIn: String, navController: NavController) {
         val graph = navController.navInflater.inflate(getMainNavigationGraphId())
         graph.setStartDestination(
-            if (isSignedIn) {
-                getTabsDestination()
+            if (isSignedIn == STUDENT) {
+                getStudentTabsDestination()
             } else {
                 getSignInDestination()
             }
@@ -81,17 +86,17 @@ class MainActivity : AppCompatActivity() {
         return navHost.navController
     }
 
-    private fun isSignedIn(): Boolean {
+    private fun isSignedIn(): String {
         val bundle = intent.extras ?: throw IllegalStateException("No required arguments")
         val args = MainActivityArgs.fromBundle(bundle)
         return args.isSignedIn
     }
 
-    private fun isSignInDestination(destination: NavDestination?): Boolean =
-        destination?.parent?.id == getMainGraphId()
+//    private fun isSignInDestination(destination: NavDestination?): Boolean =
+//        destination?.parent?.id == getMainGraphId()
 
     private fun getMainNavigationGraphId(): Int = R.navigation.main_graph
-    private fun getTabsDestination(): Int = R.id.tabs_fragment
+    private fun getStudentTabsDestination(): Int = R.id.tabs_student_graph
     private fun getSignInDestination(): Int = R.id.login_fragment
     private fun getMainGraphId(): Int = R.id.main_graph
 

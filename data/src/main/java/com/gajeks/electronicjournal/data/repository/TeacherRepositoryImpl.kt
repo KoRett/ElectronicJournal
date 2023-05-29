@@ -8,5 +8,7 @@ class TeacherRepositoryImpl(private val teacherDao: TeacherDao) : TeacherReposit
     override suspend fun getId(email: String): Int? = teacherDao.getId(email = email)
 
     override suspend fun getPassword(email: String): String? = teacherDao.getPassword(email = email)
+    override suspend fun setPassword(teacherId: Int, newPassword: String) =
+        teacherDao.setPassword(teacherId = teacherId, newPassword = newPassword)
 
 }

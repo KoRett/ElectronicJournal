@@ -6,4 +6,12 @@ interface LocalAccountRepository {
 
     suspend fun saveLocalId(id: Int)
 
+    suspend fun removeLocalId()
+
+    suspend fun getLocalType(): String
+
+    suspend fun saveLocalType(type: String)
+
+    suspend fun removeLocalType()
+
 }

@@ -8,7 +8,7 @@ import com.gajeks.electronicjournal.data.storage.room.entities.LessonNameEntity
 data class NameWithLessons(
     @Embedded val lessonName: LessonNameEntity,
     @Relation(
-        parentColumn = "id",
+        parentColumn = "lesson_name_id",
         entityColumn = "lesson_name_id"
     )
     val lessons: List<LessonEntity>

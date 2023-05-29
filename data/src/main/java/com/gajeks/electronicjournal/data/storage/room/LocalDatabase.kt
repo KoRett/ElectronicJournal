@@ -2,8 +2,7 @@ package com.gajeks.electronicjournal.data.storage.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.gajeks.electronicjournal.data.storage.room.dao.StudentDao
-import com.gajeks.electronicjournal.data.storage.room.dao.TeacherDao
+import com.gajeks.electronicjournal.data.storage.room.dao.*
 import com.gajeks.electronicjournal.data.storage.room.entities.*
 
 @Database(
@@ -14,17 +13,24 @@ import com.gajeks.electronicjournal.data.storage.room.entities.*
         LessonEntity::class,
         LessonNameEntity::class,
         LessonsOfGroupEntity::class,
-        LessonsOfTeacherEntity::class,
         AttendanceEntity::class,
         ExerciseEntity::class,
         EstimationEntity::class,
-        TaskEntity::class,
+        TaskEntity::class
     ],
-    version = 1,
+    version = 20,
     exportSchema = true
 )
 abstract class LocalDatabase : RoomDatabase() {
+
     abstract fun studentDao(): StudentDao
 
     abstract fun teacherDao(): TeacherDao
+
+    abstract fun groupDao(): GroupDao
+
+    abstract fun lessonNameDao(): LessonNameDao
+
+    abstract fun attendanceDao(): AttendanceDao
+
 }

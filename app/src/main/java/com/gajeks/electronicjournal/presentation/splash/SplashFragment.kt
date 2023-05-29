@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.gajeks.electronicjournal.app.App
 import com.gajeks.electronicjournal.databinding.FragmentSplashBinding
-import com.gajeks.electronicjournal.domain.models.takeSuccess
 import com.gajeks.electronicjournal.models.BaseFragment
 import com.gajeks.electronicjournal.presentation.MainActivity
 import com.gajeks.electronicjournal.presentation.MainActivityArgs
@@ -37,13 +36,13 @@ class SplashFragment : BaseFragment() {
         _binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
 
         vm.resultLive.observe(viewLifecycleOwner){
-            launchMainScreen(it.takeSuccess()!!)
+            launchMainScreen(it)
         }
 
         return binding.root
     }
 
-    private fun launchMainScreen(isSignedIn: Boolean){
+    private fun launchMainScreen(isSignedIn: String){
         val intent = Intent(requireContext(), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 

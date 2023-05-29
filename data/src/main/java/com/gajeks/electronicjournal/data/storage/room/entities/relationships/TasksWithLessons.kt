@@ -10,8 +10,8 @@ import com.gajeks.electronicjournal.data.storage.room.entities.TaskEntity
 data class TaskWithLessons(
     @Embedded val task: TaskEntity,
     @Relation(
-        parentColumn = "id",
-        entityColumn = "task_id",
+        parentColumn = "task_id",
+        entityColumn = "lesson_id",
         associateBy = Junction(ExerciseEntity::class)
     )
     val lessons: List<LessonEntity>
@@ -20,8 +20,8 @@ data class TaskWithLessons(
 data class LessonWithTasks(
     @Embedded val lesson: LessonEntity,
     @Relation(
-        parentColumn = "id",
-        entityColumn = "lesson_id",
+        parentColumn = "lesson_id",
+        entityColumn = "task_id",
         associateBy = Junction(ExerciseEntity::class)
     )
     val tasks: List<TaskEntity>

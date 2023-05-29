@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tabs_student_schedule_graph"
+    app:startDestination="@id/navigation_schedule">
+
+    <fragment
+        android:id="@+id/navigation_schedule"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.student.schedule.StudentScheduleFragment"
+        android:label="Расписание"
+        tools:layout="@layout/fragment_student_schedule" />
+    <fragment
+        android:id="@+id/viewPagerItem"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.view_pager.ViewPagerItem"
+        android:label="view_pager_item"
+        tools:layout="@layout/view_pager_item" >
+        <argument
+            android:name="monday"
+            app:argType="integer" />
+        <argument
+            android:name="tuesday"
+            app:argType="integer" />
+        <argument
+            android:name="wednesday"
+            app:argType="integer" />
+        <argument
+            android:name="thursday"
+            app:argType="integer" />
+        <argument
+            android:name="friday"
+            app:argType="integer" />
+        <argument
+            android:name="saturday"
+            app:argType="integer" />
+        <argument
+            android:name="sunday"
+            app:argType="integer" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <argument android:name="currentWeekday"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>

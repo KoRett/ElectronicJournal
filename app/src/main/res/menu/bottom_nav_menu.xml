@@ -5,7 +5,7 @@
         android:icon="@drawable/ic_news"
         android:title="@string/navigation_news" />
     <item
-        android:id="@id/navigation_schedule"
+        android:id="@id/tabs_student_schedule_graph"
         android:icon="@drawable/ic_schedule"
         android:title="@string/navigation_schedule" />
     <item

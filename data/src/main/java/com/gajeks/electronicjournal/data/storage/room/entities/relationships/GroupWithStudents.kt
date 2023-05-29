@@ -8,7 +8,7 @@ import com.gajeks.electronicjournal.data.storage.room.entities.StudentEntity
 data class GroupWithStudents(
     @Embedded val group: GroupEntity,
     @Relation(
-        parentColumn = "id",
+        parentColumn = "group_id",
         entityColumn = "group_id"
     )
     val students: List<StudentEntity>

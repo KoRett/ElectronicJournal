@@ -24,6 +24,7 @@ abstract class BaseFragment : Fragment() {
             is SuccessResult -> onSuccess(result.data)
             is ErrorResult -> onError(result.exception)
             is PendingResult -> onPending()
+            else -> {}
         }
     }
 }

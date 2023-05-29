@@ -11,4 +11,12 @@ class LocalAccountRepositoryImpl(
 
     override suspend fun saveLocalId(id: Int) = localUserStorage.saveId(id = id)
 
+    override suspend fun removeLocalId() = localUserStorage.removeId()
+
+    override suspend fun getLocalType(): String = localUserStorage.getType()
+
+    override suspend fun saveLocalType(type: String) = localUserStorage.saveType(type = type)
+
+    override suspend fun removeLocalType() = localUserStorage.removeType()
+
 }

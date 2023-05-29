@@ -11,9 +11,12 @@ sealed class Result<T> {
             if (mapper == null) throw IllegalArgumentException("Mapper should not be NULL for success result")
             SuccessResult(mapper(this.data))
         }
+        is NothingResult -> NothingResult()
     }
 
 }
+
+class NothingResult<T> : Result<T>()
 
 class PendingResult<T> : Result<T>()
 
