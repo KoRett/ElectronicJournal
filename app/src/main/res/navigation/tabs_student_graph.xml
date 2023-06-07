@@ -2,19 +2,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tabs_student_graph"
+    android:id="@+id/student_tabs_fragment"
     app:startDestination="@id/tabs_student_schedule_graph">
 
     <include app:graph="@navigation/tabs_student_schedule_graph" />
 
     <fragment
-        android:id="@+id/navigation_profile"
+        android:id="@+id/navigation_student_profile"
         android:name="com.gajeks.electronicjournal.presentation.tabs.student.profile.StudentProfileFragment"
         android:label="Профиль"
         tools:layout="@layout/fragment_student_profile" />
 
     <fragment
-        android:id="@+id/navigation_news"
+        android:id="@+id/navigation_student_news"
         android:name="com.gajeks.electronicjournal.presentation.tabs.student.news.StudentNewsFragment"
         android:label="Новости"
         tools:layout="@layout/fragment_student_news" />

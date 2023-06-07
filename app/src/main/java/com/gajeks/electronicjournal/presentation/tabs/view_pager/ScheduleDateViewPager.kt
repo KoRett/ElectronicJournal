@@ -3,11 +3,11 @@ package com.gajeks.electronicjournal.presentation.tabs.view_pager
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.gajeks.electronicjournal.models.setState
-import java.util.Calendar
+import java.util.*
 
-class ViewPagerAdapter(
+class ScheduleDateViewPager(
     val fragment: Fragment,
-    private val currentWeek: Int
+    private val currentWeek: Int?
 ) : FragmentStateAdapter(fragment) {
 
     private var cal: Calendar = Calendar.getInstance()
@@ -19,7 +19,7 @@ class ViewPagerAdapter(
     override fun getItemCount(): Int = 17
 
     override fun createFragment(position: Int): Fragment {
-        val fragment = ViewPagerItem()
+        val fragment = ScheduleViewPagerItem()
 
         cal.add(Calendar.DAY_OF_MONTH, position * 7)
 
@@ -46,7 +46,7 @@ class ViewPagerAdapter(
             -1
         }
 
-        fragment.arguments = ViewPagerItemArgs(
+        fragment.arguments = ScheduleViewPagerItemArgs(
             monday,
             tuesday,
             wednesday,

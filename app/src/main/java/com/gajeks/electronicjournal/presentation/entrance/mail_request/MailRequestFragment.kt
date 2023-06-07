@@ -5,14 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.children
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.gajeks.electronicjournal.R
 import com.gajeks.electronicjournal.app.App
 import com.gajeks.electronicjournal.databinding.FragmentMailRequestBinding
-import com.gajeks.electronicjournal.databinding.PartLoadingBinding
 import com.gajeks.electronicjournal.models.BaseFragment
 import com.gajeks.electronicjournal.models.changeBackground
 import com.gajeks.electronicjournal.models.setBackground
@@ -42,50 +40,31 @@ class MailRequestFragment : BaseFragment() {
     ): View {
         _binding = FragmentMailRequestBinding.inflate(inflater, container, false)
 
-        binding.etEmail.changeBackground()
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val navController = findNavController()
 
-        binding.imBtBack.setOnClickListener { navController.popBackStack() }
-
-        vm.resultLive.observe(viewLifecycleOwner) {
-            val loadingBinding = PartLoadingBinding.bind(binding.root)
-            this.renderResult(loadingBinding.fragmentLoading, it,
-                onPending = {
-                    loadingBinding.fragmentLoading.children.forEach { children ->
-                        children.visibility = View.VISIBLE
-                    }
-                    setInteractionWithViews(isWork = false)
-                },
-                onError = {
-                    loadingBinding.fragmentLoading.children.forEach { children ->
-                        children.visibility = View.GONE
-                    }
-                    setInteractionWithViews(isWork = true)
-                },
-                onSuccess = {
-                    navController.navigate(R.id.action_mail_request_fragment_to_changing_password_fragment)
-                    vm.resetResult()
-                    setInteractionWithViews(isWork = true)
-                })
-        }
+        binding.etEmail.changeBackground()
+        binding.etEmail.setText(getEmailArgument() ?: "")
 
         binding.btSend.setOnClickListener {
             vm.sendEmail(binding.etEmail.text.toString())
         }
 
-        binding.etEmail.setText(getEmailArgument() ?: "")
+        binding.imBtBack.setOnClickListener { navController.popBackStack() }
 
-        return binding.root
-    }
-
-    private fun setInteractionWithViews(isWork: Boolean) {
-        val loadingBinding = PartLoadingBinding.bind(binding.root)
-        binding.root.children.forEach { children ->
-            if (children.id != loadingBinding.fragmentLoading.id) {
-                children.isClickable = isWork
-                children.isFocusableInTouchMode = isWork
-            }
+        vm.resultLive.observe(viewLifecycleOwner) {
+            this.renderLoading(binding.root, it,
+                onPending = {},
+                onError = {},
+                onSuccess = {
+                    navController.navigate(R.id.action_mail_request_fragment_to_changing_password_fragment)
+                    vm.resetResult()
+                })
         }
     }
 

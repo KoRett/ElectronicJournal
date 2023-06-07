@@ -97,20 +97,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
-    <TextView
-        android:id="@+id/text_error"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/text_login_error"
-        android:textColor="@color/middle_gray"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/bt_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_forgot_password" />
-
     <Button
         android:id="@+id/bt_login"
         style="@style/ButtonStyle"

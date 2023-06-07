@@ -38,8 +38,31 @@ class ChangingPasswordFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentChangingPasswordBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.etNewPassword.changeBackground()
+        binding.etConfirmationCode.changeBackground()
+        binding.etConfirmationNewPassword.changeBackground()
+
         val navController = findNavController()
         binding.imBtBack.setOnClickListener { navController.popBackStack() }
+
+        binding.btChangePassword.setOnClickListener {
+            if (binding.etConfirmationCode.text.isNotEmpty() and
+                binding.etNewPassword.text.isNotEmpty() and
+                binding.etConfirmationNewPassword.text.isNotEmpty()
+            )
+                vm.changePassword(
+                    binding.etConfirmationCode.text.toString().toInt(),
+                    binding.etNewPassword.text.toString(),
+                    binding.etConfirmationNewPassword.text.toString()
+                )
+        }
 
         vm.resultLive.observe(viewLifecycleOwner) { result ->
             val loadingBinding = PartLoadingBinding.bind(binding.root)
@@ -60,24 +83,6 @@ class ChangingPasswordFragment : BaseFragment() {
                     navController.navigate(R.id.action_changing_password_fragment_to_login_fragment)
                 })
         }
-
-        binding.btChangePassword.setOnClickListener {
-            if (binding.etConfirmationCode.text.isNotEmpty() and
-                binding.etNewPassword.text.isNotEmpty() and
-                binding.etConfirmationNewPassword.text.isNotEmpty()
-            )
-                vm.changePassword(
-                    binding.etConfirmationCode.text.toString().toInt(),
-                    binding.etNewPassword.text.toString(),
-                    binding.etConfirmationNewPassword.text.toString()
-                )
-        }
-
-        binding.etNewPassword.changeBackground()
-        binding.etConfirmationCode.changeBackground()
-        binding.etConfirmationNewPassword.changeBackground()
-
-        return binding.root
     }
 
     private fun setInteractionWithViews(isWork: Boolean) {

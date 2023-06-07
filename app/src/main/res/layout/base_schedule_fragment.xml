@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/accent_variant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/im_bt_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:background="#00000000"
+            android:src="@drawable/ic_back_variant"
+            app:layout_constraintBottom_toTopOf="@id/vp_dates"
+            app:layout_constraintEnd_toStartOf="@id/text_date"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/im_bt_back"
+            app:layout_constraintEnd_toStartOf="@id/im_bt_forward"
+            app:layout_constraintStart_toEndOf="@id/im_bt_back"
+            app:layout_constraintTop_toTopOf="@id/im_bt_back" />
+
+        <ImageButton
+            android:id="@+id/im_bt_forward"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:background="#00000000"
+            android:src="@drawable/ic_forward_variant"
+            app:layout_constraintBottom_toBottomOf="@id/text_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_date"
+            app:layout_constraintTop_toTopOf="@id/text_date" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_dates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/im_bt_back" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:background="@color/accent_light"
+        app:layout_constraintEnd_toEndOf="@id/cl_date"
+        app:layout_constraintStart_toStartOf="@id/cl_date"
+        app:layout_constraintTop_toBottomOf="@+id/cl_date" />
+
+</merge>

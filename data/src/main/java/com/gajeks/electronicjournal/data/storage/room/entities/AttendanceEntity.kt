@@ -12,7 +12,7 @@ data class AttendanceEntity(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "attendance_id") val attendanceId: Int,
     @ColumnInfo(name = "student_id") val studentId: Int,
     @ColumnInfo(name = "lesson_id") val lessonId: Int,
-    @ColumnInfo(name = "is_attended") val isAttended: Boolean,
+    @ColumnInfo(name = "is_attended") var isAttended: Boolean,
     val date: String
 ) {
     companion object {

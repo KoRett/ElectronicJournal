@@ -9,5 +9,6 @@ data class StudentLesson(
     val isSeminar: Boolean,
     val lessonName: String,
     val teacherName: PersonName,
-    val isAttended: Boolean
+    val isAttended: Boolean,
+    val lessonId: Int
 )

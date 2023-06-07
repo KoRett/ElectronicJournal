@@ -1,6 +1,6 @@
 package com.gajeks.electronicjournal.di
 
-import com.gajeks.electronicjournal.domain.models.SelectedDate
+import com.gajeks.electronicjournal.domain.models.selected_date.SelectedDate
 import com.gajeks.electronicjournal.domain.repository.*
 import com.gajeks.electronicjournal.domain.usecase.*
 import dagger.Module
@@ -39,6 +39,14 @@ class DomainModule {
     }
 
     @Provides
+    fun provideGetTeacherLessonsUseCase(
+        lessonRepository: LessonRepository
+    ): GetTeacherLessonsUseCase {
+        return GetTeacherLessonsUseCase(lessonRepository = lessonRepository)
+    }
+
+
+    @Provides
     fun provideLogoutUseCase(
         localAccountRepository: LocalAccountRepository
     ): LogoutUseCase {
@@ -74,6 +82,27 @@ class DomainModule {
         studentRepository: StudentRepository
     ): GetStudentDataUseCase {
         return GetStudentDataUseCase(studentRepository = studentRepository)
+    }
+
+    @Provides
+    fun provideGetTeacherDataUseCase(
+        teacherRepository: TeacherRepository
+    ): GetTeacherDataUseCase {
+        return GetTeacherDataUseCase(teacherRepository = teacherRepository)
+    }
+
+    @Provides
+    fun provideGetStudentsByLessonUseCase(
+        lessonRepository: LessonRepository
+    ): GetStudentsByLessonUseCase {
+        return GetStudentsByLessonUseCase(lessonRepository = lessonRepository)
+    }
+
+    @Provides
+    fun provideSaveStudentAttendanceUseCase(
+        lessonRepository: LessonRepository
+    ): SaveStudentAttendanceUseCase {
+        return SaveStudentAttendanceUseCase(lessonRepository = lessonRepository)
     }
 
     @Provides

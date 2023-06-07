@@ -7,24 +7,22 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SplashViewModel(private val checkAccountLoginUseCase: CheckAccountLoginUseCase) : BaseViewModel() {
+class SplashViewModel(private val checkAccountLoginUseCase: CheckAccountLoginUseCase) :
+    BaseViewModel() {
 
     private val resultLiveData = MutableLiveData<String>()
     val resultLive: LiveData<String> = resultLiveData
 
-    init{
+    init {
         checkAccountLogin()
     }
 
-    private fun checkAccountLogin(){
+    private fun checkAccountLogin() {
         viewModelScope.launch(Dispatchers.IO) {
-            val result: String = checkAccountLoginUseCase.execute()
-            launch(Dispatchers.Main) {
-                resultLiveData.value = result
-            }
+            val result = checkAccountLoginUseCase.execute()
+            resultLiveData.postValue(result)
         }
     }
-
 
     class Factory @Inject constructor(
         private val checkAccountLoginUseCase: CheckAccountLoginUseCase

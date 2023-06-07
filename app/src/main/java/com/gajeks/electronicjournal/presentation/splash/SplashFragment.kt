@@ -35,14 +35,17 @@ class SplashFragment : BaseFragment() {
     ): View {
         _binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
 
-        vm.resultLive.observe(viewLifecycleOwner){
-            launchMainScreen(it)
-        }
-
         return binding.root
     }
 
-    private fun launchMainScreen(isSignedIn: String){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        vm.resultLive.observe(viewLifecycleOwner) {
+            launchMainScreen(it)
+        }
+    }
+
+    private fun launchMainScreen(isSignedIn: String) {
         val intent = Intent(requireContext(), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 

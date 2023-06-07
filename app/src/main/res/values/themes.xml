@@ -1,13 +1,10 @@
 <resources>
+
     <style name="Theme.ElectronicJournal" parent="Theme.AppCompat.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/accent</item>
         <item name="colorPrimaryVariant">@color/accent_variant</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/dark</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/accent_variant</item>
         <item name="android:navigationBarColor">@color/white</item>
@@ -15,6 +12,9 @@
         <!-- Customize your theme here. -->
         <item name="actionBarStyle">@style/ActionBarStyle</item>
         <item name="titleTextColor">@color/white</item>
+        <item name="popupMenuStyle">@style/PopupMenuStyle</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/PopupMenuStyle.TextAppearance</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/PopupMenuStyle.TextAppearance</item>
 
     </style>
 

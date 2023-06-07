@@ -14,17 +14,17 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.gajeks.electronicjournal.R
 import com.gajeks.electronicjournal.app.App
-import com.gajeks.electronicjournal.databinding.ViewPagerItemBinding
-import com.gajeks.electronicjournal.domain.models.SelectedDate
-import com.gajeks.electronicjournal.domain.models.WeekObserver
+import com.gajeks.electronicjournal.databinding.ScheduleViewPagerItemBinding
+import com.gajeks.electronicjournal.domain.models.selected_date.SelectedDate
+import com.gajeks.electronicjournal.domain.models.selected_date.WeekObserver
 import java.util.Calendar
 import javax.inject.Inject
 
-class ViewPagerItem : Fragment(), WeekObserver {
+class ScheduleViewPagerItem : Fragment(), WeekObserver {
 
-    private var _binding: ViewPagerItemBinding? = null
+    private var _binding: ScheduleViewPagerItemBinding? = null
     private val binding get() = _binding!!
-    private val args by navArgs<ViewPagerItemArgs>()
+    private val args by navArgs<ScheduleViewPagerItemArgs>()
     private var imId: Int? = null
     private var imIndex: Int? = null
 
@@ -39,8 +39,13 @@ class ViewPagerItem : Fragment(), WeekObserver {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = ViewPagerItemBinding.inflate(inflater, container, false)
+        _binding = ScheduleViewPagerItemBinding.inflate(inflater, container, false)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.textMonday.text = args.monday.toString()
         binding.textMonday.setOnClickListener { selectDate(Calendar.MONDAY) }
 
@@ -74,8 +79,6 @@ class ViewPagerItem : Fragment(), WeekObserver {
         if (selectedDate.selectedWeek == args.position) {
             selectDate(selectedDate.selectedWeekday!!)
         }
-
-        return binding.root
     }
 
     private fun selectDate(weekday: Int) {

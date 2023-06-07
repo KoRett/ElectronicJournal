@@ -23,7 +23,7 @@ class StudentRepositoryImpl(
         studentDao.getName(studentId)?.map()
 
     override suspend fun getAttendance(studentId: Int): Int? =
-        attendanceDao.getAttendance(studentId)?.size
+        attendanceDao.getAttendance(studentId)?.filter { it.isAttended }?.size
 
     override suspend fun getGroup(studentId: Int): String? =
         groupDao.getName(studentDao.getGroupId(studentId)!!)

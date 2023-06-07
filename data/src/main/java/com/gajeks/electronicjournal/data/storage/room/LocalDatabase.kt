@@ -24,13 +24,10 @@ import com.gajeks.electronicjournal.data.storage.room.entities.*
 abstract class LocalDatabase : RoomDatabase() {
 
     abstract fun studentDao(): StudentDao
-
     abstract fun teacherDao(): TeacherDao
-
     abstract fun groupDao(): GroupDao
-
     abstract fun lessonNameDao(): LessonNameDao
-
     abstract fun attendanceDao(): AttendanceDao
+    abstract fun lessonDao(): LessonDao
 
 }

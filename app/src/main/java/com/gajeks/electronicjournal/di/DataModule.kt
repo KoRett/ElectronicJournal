@@ -21,8 +21,7 @@ class DataModule {
             context,
             LocalDatabase::class.java,
             name = "local_database.db"
-        ).createFromAsset("database/local_database.db")
-            .fallbackToDestructiveMigration().build()
+        ).createFromAsset("database/local_database.db").build()
 
     @Provides
     @Singleton
@@ -64,6 +63,7 @@ class DataModule {
         return LessonRepositoryImpl(
             studentDao = localDatabase.studentDao(),
             groupDao = localDatabase.groupDao(),
+            lessonDao = localDatabase.lessonDao(),
             lessonNameDao = localDatabase.lessonNameDao(),
             teacherDao = localDatabase.teacherDao(),
             attendanceDao = localDatabase.attendanceDao()

@@ -4,18 +4,18 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.gajeks.electronicjournal.databinding.ScheduleItemBinding
+import com.gajeks.electronicjournal.databinding.StudentScheduleItemBinding
 import com.gajeks.electronicjournal.domain.models.StudentLesson
 
-class ScheduleAdapter(private val dataSet: List<StudentLesson>) :
-    RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
+class StudentScheduleAdapter(private val dataSet: List<StudentLesson>) :
+    RecyclerView.Adapter<StudentScheduleAdapter.ViewHolder>() {
 
-    class ViewHolder(val binding: ScheduleItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: StudentScheduleItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-
         val inflater = LayoutInflater.from(viewGroup.context)
-        val binding = ScheduleItemBinding.inflate(inflater, viewGroup, false)
+        val binding = StudentScheduleItemBinding.inflate(inflater, viewGroup, false)
         return ViewHolder(binding)
     }
 

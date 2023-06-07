@@ -10,6 +10,9 @@ interface StudentDao {
     @Query("SELECT password FROM ${StudentEntity.TABLE_NAME} WHERE email LIKE :email")
     suspend fun getPassword(email: String): String?
 
+    @Query("SELECT * FROM ${StudentEntity.TABLE_NAME} WHERE group_id LIKE :groupId")
+    suspend fun getStudents(groupId: Int): List<StudentEntity>?
+
     @Query("SELECT password FROM ${StudentEntity.TABLE_NAME} WHERE student_id LIKE :studentId")
     suspend fun getPassword(studentId: Int): String?
 

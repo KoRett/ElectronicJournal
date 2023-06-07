@@ -3,18 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tabs_student_schedule_graph"
-    app:startDestination="@id/navigation_schedule">
+    app:startDestination="@id/navigation_student_schedule">
 
     <fragment
-        android:id="@+id/navigation_schedule"
+        android:id="@+id/navigation_student_schedule"
         android:name="com.gajeks.electronicjournal.presentation.tabs.student.schedule.StudentScheduleFragment"
         android:label="Расписание"
         tools:layout="@layout/fragment_student_schedule" />
     <fragment
-        android:id="@+id/viewPagerItem"
-        android:name="com.gajeks.electronicjournal.presentation.tabs.view_pager.ViewPagerItem"
-        android:label="view_pager_item"
-        tools:layout="@layout/view_pager_item" >
+        android:id="@+id/student_schedule_view_pager_item"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.view_pager.ScheduleViewPagerItem"
+        tools:layout="@layout/schedule_view_pager_item" >
         <argument
             android:name="monday"
             app:argType="integer" />

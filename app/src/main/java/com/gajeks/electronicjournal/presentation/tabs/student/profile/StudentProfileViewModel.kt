@@ -18,20 +18,16 @@ class StudentProfileViewModel(
     private val getStudentDataUseCase: GetStudentDataUseCase
 ) : BaseViewModel() {
 
-    private var studentData = MutableLiveResult<StudentData>(PendingResult())
+    private var studentData = MutableLiveResult<StudentData>(NothingResult())
     var student: LiveResult<StudentData> = studentData
 
     fun getStudentData() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val data = getStudentDataUseCase.exec(UserParams.id!!)
-                launch(Dispatchers.Main) {
-                    studentData.value = SuccessResult(data)
-                }
+                studentData.postValue(SuccessResult(data))
             } catch (_: Exception) {
-                launch(Dispatchers.Main) {
-                    studentData.value = ErrorResult(RuntimeException())
-                }
+                studentData.postValue(ErrorResult(RuntimeException()))
             }
         }
     }

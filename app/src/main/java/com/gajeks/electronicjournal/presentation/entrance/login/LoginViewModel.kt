@@ -24,9 +24,7 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : BaseViewModel() {
         loginJob?.cancel()
         loginJob = viewModelScope.launch(Dispatchers.IO) {
             val result: String? = loginUseCase.execute(userLoginParams = userLoginParams)
-            launch(Dispatchers.Main) {
-                resultLiveData.value = result
-            }
+            resultLiveData.postValue(result)
         }
     }
 

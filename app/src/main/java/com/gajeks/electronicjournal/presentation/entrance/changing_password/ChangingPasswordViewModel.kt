@@ -33,22 +33,16 @@ class ChangingPasswordViewModel(private val changingPasswordUseCase: ChangePassw
     ) {
         job?.cancel()
         job = viewModelScope.launch(Dispatchers.IO) {
-            launch(Dispatchers.Main) {
-                resultLiveData.value = PendingResult()
-            }
+            resultLiveData.postValue(PendingResult())
             try {
                 changingPasswordUseCase.exec(
                     code = code,
                     newPassword = newPassword,
                     confirmNewPassword = confirmNewPassword
                 )
-                launch(Dispatchers.Main) {
-                    resultLiveData.value = SuccessResult(Unit)
-                }
+                resultLiveData.postValue(SuccessResult(Unit))
             } catch (e: Exception) {
-                launch(Dispatchers.Main) {
-                    resultLiveData.value = ErrorResult(e)
-                }
+                resultLiveData.postValue(ErrorResult(e))
             }
         }
     }

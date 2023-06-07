@@ -29,5 +29,8 @@
     <string name="text_vs">ВС</string>
     <string name="text_logout">Выйти</string>
     <string name="text_options">Настройки</string>
-    <string name="text_login_error">Неправильная почта или пароль!\nПовторите попытку.</string>
+    <string name="text_task_control">Управление заданиями</string>
+    <string name="text_mark_attendance">Отметить посещаемость</string>
+    <string name="text_students">Студенты</string>
+    <string name="text_save">Сохранить</string>
 </resources>

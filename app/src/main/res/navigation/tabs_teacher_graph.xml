@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/teacher_tabs_fragment"
+    app:startDestination="@id/tabs_teacher_schedule_graph">
+
+    <include app:graph="@navigation/tabs_teacher_schedule_graph" />
+
+    <fragment
+        android:id="@+id/navigation_teacher_profile"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.teacher.profile.TeacherProfileFragment"
+        android:label="Профиль"
+        tools:layout="@layout/fragment_teacher_profile" />
+
+    <fragment
+        android:id="@+id/navigation_teacher_news"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.teacher.news.TeacherNewsFragment"
+        android:label="Новости"
+        tools:layout="@layout/fragment_teacher_news" />
+
+
+</navigation>

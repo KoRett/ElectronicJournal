@@ -8,7 +8,11 @@ import com.gajeks.electronicjournal.presentation.splash.SplashFragment
 import com.gajeks.electronicjournal.presentation.tabs.student.StudentTabsFragment
 import com.gajeks.electronicjournal.presentation.tabs.student.profile.StudentProfileFragment
 import com.gajeks.electronicjournal.presentation.tabs.student.schedule.StudentScheduleFragment
-import com.gajeks.electronicjournal.presentation.tabs.view_pager.ViewPagerItem
+import com.gajeks.electronicjournal.presentation.tabs.teacher.TeacherTabsFragment
+import com.gajeks.electronicjournal.presentation.tabs.teacher.profile.TeacherProfileFragment
+import com.gajeks.electronicjournal.presentation.tabs.teacher.schedule.TeacherScheduleFragment
+import com.gajeks.electronicjournal.presentation.tabs.teacher.schedule.attendance.TeacherAttendanceFragment
+import com.gajeks.electronicjournal.presentation.tabs.view_pager.ScheduleViewPagerItem
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -23,8 +27,12 @@ interface AppComponent {
     fun inject(studentScheduleFragment: StudentScheduleFragment)
     fun inject(mailRequestFragment: MailRequestFragment)
     fun inject(changingPasswordFragment: ChangingPasswordFragment)
-    fun inject(viewPagerItem: ViewPagerItem)
+    fun inject(scheduleViewPagerItem: ScheduleViewPagerItem)
     fun inject(studentTabsFragment: StudentTabsFragment)
+    fun inject(teacherTabsFragment: TeacherTabsFragment)
+    fun inject(teacherProfileFragment: TeacherProfileFragment)
+    fun inject(teacherScheduleFragment: TeacherScheduleFragment)
+    fun inject(teacherAttendanceFragment: TeacherAttendanceFragment)
 
     @Component.Builder
     interface Builder {

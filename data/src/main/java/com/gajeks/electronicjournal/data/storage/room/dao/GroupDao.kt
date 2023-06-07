@@ -11,7 +11,7 @@ interface GroupDao {
 
     @Transaction
     @Query("SELECT * FROM ${GroupEntity.TABLE_NAME} WHERE group_id LIKE :groupId")
-    suspend fun getLessons(groupId: Int): List<GroupWithLessons>?
+    suspend fun getLessons(groupId: Int): GroupWithLessons?
 
     @Query("SELECT name FROM ${GroupEntity.TABLE_NAME} WHERE group_id LIKE :groupId")
     suspend fun getName(groupId: Int): String?

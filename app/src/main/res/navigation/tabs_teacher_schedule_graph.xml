@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tabs_teacher_schedule_graph"
+    app:startDestination="@id/navigation_teacher_schedule">
+
+    <fragment
+        android:id="@+id/teacher_schedule_view_pager_item"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.view_pager.ScheduleViewPagerItem"
+        tools:layout="@layout/schedule_view_pager_item">
+        <argument
+            android:name="monday"
+            app:argType="integer" />
+        <argument
+            android:name="tuesday"
+            app:argType="integer" />
+        <argument
+            android:name="wednesday"
+            app:argType="integer" />
+        <argument
+            android:name="thursday"
+            app:argType="integer" />
+        <argument
+            android:name="friday"
+            app:argType="integer" />
+        <argument
+            android:name="saturday"
+            app:argType="integer" />
+        <argument
+            android:name="sunday"
+            app:argType="integer" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <argument
+            android:name="currentWeekday"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_teacher_schedule"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.teacher.schedule.TeacherScheduleFragment"
+        android:label="Расписание"
+        tools:layout="@layout/fragment_teacher_schedule">
+        <action
+            android:id="@+id/action_teacher_schedule_fragment_to_teacher_attendance_fragment"
+            app:destination="@id/navigation_teacher_attendance"
+            app:enterAnim="@anim/appear"
+            app:exitAnim="@anim/disappear" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_teacher_attendance"
+        android:name="com.gajeks.electronicjournal.presentation.tabs.teacher.schedule.attendance.TeacherAttendanceFragment"
+        android:label="Посещаемость"
+        tools:layout="@layout/fragment_teacher_attendance">
+        <argument
+            android:name="lessonId"
+            app:argType="integer" />
+        <argument
+            android:name="date"
+            app:argType="string" />
+    </fragment>
+
+
+</navigation>

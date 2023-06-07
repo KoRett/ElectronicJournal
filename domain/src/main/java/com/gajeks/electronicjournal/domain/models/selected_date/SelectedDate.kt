@@ -1,4 +1,4 @@
-package com.gajeks.electronicjournal.domain.models
+package com.gajeks.electronicjournal.domain.models.selected_date
 
 class SelectedDate {
     var weekObserver: WeekObserver? = null

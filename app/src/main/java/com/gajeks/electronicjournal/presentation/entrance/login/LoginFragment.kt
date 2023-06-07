@@ -1,11 +1,11 @@
 package com.gajeks.electronicjournal.presentation.entrance.login
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,6 +14,7 @@ import com.gajeks.electronicjournal.app.App
 import com.gajeks.electronicjournal.databinding.FragmentLoginBinding
 import com.gajeks.electronicjournal.domain.models.UserLoginParams
 import com.gajeks.electronicjournal.domain.usecase.LoginUseCase.Companion.STUDENT
+import com.gajeks.electronicjournal.domain.usecase.LoginUseCase.Companion.TEACHER
 import com.gajeks.electronicjournal.models.BaseFragment
 import com.gajeks.electronicjournal.models.changeBackground
 import com.gajeks.electronicjournal.models.isValidEmail
@@ -25,9 +26,6 @@ class LoginFragment : BaseFragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-
-    private var etEmail: EditText? = null
-    private var etPassword: EditText? = null
 
     @Inject
     lateinit var vmFactory: Provider<LoginViewModel.Factory>
@@ -44,27 +42,27 @@ class LoginFragment : BaseFragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
-        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+        return binding.root
+    }
 
-        etEmail = binding.etEmail
-        etPassword = binding.etPassword
-
-        etEmail?.changeBackground()
-        etPassword?.changeBackground()
-
-        vm.resultLive.observe(viewLifecycleOwner) {
-            if (it == STUDENT) {
-                findNavController().navigate(R.id.action_login_fragment_to_tabs_student_fragment)
-            }
-            else
-                binding.textError.visibility = View.VISIBLE
+    @SuppressLint("RestrictedApi")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as AppCompatActivity).supportActionBar?.let {
+            it.setShowHideAnimationEnabled(false)
+            it.hide()
         }
+
+        binding.etEmail.changeBackground()
+        binding.etPassword.changeBackground()
+
+        val navController = findNavController()
 
         binding.btLogin.setOnClickListener {
             vm.login(
                 UserLoginParams(
-                    email = etEmail?.text.toString(),
-                    password = etPassword?.text.toString()
+                    email = binding.etEmail.text.toString(),
+                    password = binding.etPassword.text.toString()
                 )
             )
         }
@@ -73,7 +71,13 @@ class LoginFragment : BaseFragment() {
             onForgotPasswordTextPressed()
         }
 
-        return binding.root
+        vm.resultLive.observe(viewLifecycleOwner) {
+            if (it == STUDENT) {
+                navController.navigate(R.id.action_login_fragment_to_tabs_student_fragment)
+            } else if (it == TEACHER) {
+                navController.navigate(R.id.action_login_fragment_to_tabs_teacher_fragment)
+            }
+        }
     }
 
     private fun onForgotPasswordTextPressed() {

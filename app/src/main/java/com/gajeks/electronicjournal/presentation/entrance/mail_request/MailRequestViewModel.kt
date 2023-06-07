@@ -11,7 +11,6 @@ import com.gajeks.electronicjournal.models.LiveResult
 import com.gajeks.electronicjournal.models.MutableLiveResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -31,18 +30,12 @@ class MailRequestViewModel(
     fun sendEmail(emailReceiver: String) {
         job?.cancel()
         job = viewModelScope.launch(Dispatchers.IO) {
-            launch(Dispatchers.Main) {
-                resultLiveData.value = PendingResult()
-            }
-            delay(1000L)
+            resultLiveData.postValue(PendingResult())
             val result = confirmEmailUseCase.exec(emailReceiver = emailReceiver)
-
-            launch(Dispatchers.Main) {
-                if (result)
-                    resultLiveData.value = SuccessResult(Unit)
-                else
-                    resultLiveData.value = ErrorResult(RuntimeException())
-            }
+            if (result)
+                resultLiveData.postValue(SuccessResult(Unit))
+            else
+                resultLiveData.postValue(ErrorResult(RuntimeException()))
         }
     }
 

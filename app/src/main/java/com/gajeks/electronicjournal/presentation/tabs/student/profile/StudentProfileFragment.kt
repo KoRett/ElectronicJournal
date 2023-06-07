@@ -32,13 +32,18 @@ class StudentProfileFragment : BaseFragment() {
         (context.applicationContext as App).appComponent.inject(this)
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentStudentProfileBinding.inflate(inflater, container, false)
-        vm.getStudentData()
+
+        return binding.root
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.textOptions.setOnClickListener {
             TransitionManager.beginDelayedTransition(
@@ -54,11 +59,12 @@ class StudentProfileFragment : BaseFragment() {
                 binding.optionsList.visibility = View.GONE
             }
             animation.fillAfter = true
+            binding.imOptions.startAnimation(animation)
         }
 
         binding.textLogout.setOnClickListener {
             vm.logout()
-            findTopNavController().navigate(R.id.login_fragment)
+            findTopNavController().navigate(R.id.action_tabs_student_fragment_to_login_fragment)
         }
 
         vm.student.observe(viewLifecycleOwner) { result ->
@@ -76,7 +82,7 @@ class StudentProfileFragment : BaseFragment() {
                 })
         }
 
-        return binding.root
+        vm.getStudentData()
     }
 
     override fun onDestroyView() {
